@@ -8,6 +8,7 @@ public class Application extends JFrame {
 
     	  add(new Board());
 
+    	  //test
           setSize(250, 200);
 
           setTitle("Digital Game 2021");
