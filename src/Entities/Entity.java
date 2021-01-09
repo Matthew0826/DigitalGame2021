@@ -25,6 +25,7 @@ public abstract class Entity {
 		return y;
 	}
 	
+	//test
 	
 	public void setX( int x ) {
 		this.x = x;
