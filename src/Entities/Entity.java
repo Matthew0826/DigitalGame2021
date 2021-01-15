@@ -1,7 +1,7 @@
 package Entities;
 
 import java.awt.Image;
-
+//Dan's Github works!!!
 public abstract class Entity {
 	
 	private int x;
