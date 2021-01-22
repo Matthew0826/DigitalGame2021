@@ -17,6 +17,7 @@ public class Doctor extends Enemy{
 		return collectedMoney + c;
 	}
 	// Dan made a comment
+	//eggnog
 	
 	public void trackHarmedEnemy(Eneny enemy) {
 		//I think?
