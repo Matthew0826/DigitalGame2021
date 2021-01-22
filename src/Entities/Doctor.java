@@ -13,8 +13,8 @@ public class Doctor extends Enemy{
 		return collectedMoney;
 	}
 	
-	public int setCollectedMoney(int c) {
-		return collectedMoney + c;
+	public void setCollectedMoney(int c) {
+		collectedMoney = collectedMoney + c;
 	}
 	// Dan made a comment
 	//eggnog
