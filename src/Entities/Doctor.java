@@ -16,7 +16,7 @@ public class Doctor extends Enemy{
 	public int setCollectedMoney(int c) {
 		return collectedMoney + c;
 	}
-	
+	// Dan made a comment
 	
 	public void trackHarmedEnemy(Eneny enemy) {
 		//I think?
