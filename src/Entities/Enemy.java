@@ -8,4 +8,5 @@ public abstract class Enemy extends Entity{
 		super( x, y, image );	
 	}
 	public abstract void trackAlly( Ally ally );
+	//Matt made this change :)
 }
