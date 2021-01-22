@@ -16,8 +16,6 @@ public class Doctor extends Enemy{
 	public void setCollectedMoney(int c) {
 		collectedMoney = collectedMoney + c;
 	}
-	// Dan made a comment
-	//eggnog
 	
 	public void trackHarmedEnemy(Enemy enemy) {
 		//I think?
@@ -31,5 +29,5 @@ public class Doctor extends Enemy{
 	public void trackAlly(Ally ally) {
 		
 	}
-
+// Just checking if github works
 }
