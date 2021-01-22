@@ -19,7 +19,7 @@ public class Doctor extends Enemy{
 	// Dan made a comment
 	//eggnog
 	
-	public void trackHarmedEnemy(Eneny enemy) {
+	public void trackHarmedEnemy(Enemy enemy) {
 		//I think?
 	}
 	    
