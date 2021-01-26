@@ -1,5 +1,6 @@
 package Entities;
 
+import java.awt.Graphics;
 import java.awt.Image;
 //Dan's Github works!!!
 //Tickity tackity
@@ -8,7 +9,7 @@ public abstract class Entity {
 	private int x;
 	private int y;
 	
-	private int dx;
+	private int dx = 10;
 	private int dy;
 	
 	private Image image;
@@ -63,6 +64,10 @@ public abstract class Entity {
 	
 	public void setImage( Image i ) {
 		image = i;
+	}
+	
+	public void draw( Graphics g ) {
+		g.drawImage( image, x, y, null );
 	}
 	
 }
