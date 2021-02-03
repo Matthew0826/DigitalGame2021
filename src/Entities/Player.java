@@ -13,6 +13,8 @@ public class Player extends Ally{
 	
 	public Player( int x, int y ){
 		super( x, y, startingImage.getImage() );
+		setWidth( 200 );
+		setHeight( 400 );
     }
 	
 	@Override

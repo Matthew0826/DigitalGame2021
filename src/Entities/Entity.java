@@ -2,6 +2,10 @@ package Entities;
 
 import java.awt.Graphics;
 import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+import Main.CollisionBox;
 //Dan's Github works!!!
 //Tickity tackity
 public abstract class Entity {
@@ -12,7 +16,12 @@ public abstract class Entity {
 	private int dx = 10;
 	private int dy;
 	
+	private int width;
+	private int height;
+	
 	private Image image;
+	
+	private CollisionBox cBox;
 	
 	public Entity( int x, int y, Image image ){
 		this.x = x;
@@ -52,6 +61,9 @@ public abstract class Entity {
 		this.dy = dy;
 	}
 	
+	public void setWidth( int width ) { this.width = width; }
+	public void setHeight( int height ) { this.height = height; }
+	
 	public void move() {
 		x += dx;
 		y += dy;
@@ -67,7 +79,7 @@ public abstract class Entity {
 	}
 	
 	public void draw( Graphics g ) {
-		g.drawImage( image, x, y, null );
+		g.drawImage( image, x, y, width, height, null );
 	}
 	
 }
