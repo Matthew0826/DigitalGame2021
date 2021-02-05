@@ -10,11 +10,11 @@ import Main.CollisionBox;
 //Tickity tackity
 public abstract class Entity {
 	
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	
-	private int dx = 10;
-	private int dy;
+	private double dx;
+	private double dy;
 	
 	private int width;
 	private int height;
@@ -27,42 +27,48 @@ public abstract class Entity {
 		this.x = x;
 		this.y = y;
 		this.image = image;
+		cBox = new CollisionBox( x, y, height, width, 0 );
 	}
 
-	public int getX() {
+	public double getX() {
 		return x;
 	}
-	public int getY() {
+	public double getY() {
 		return y;
 	}
 	
 	//test
 	
-	public void setX( int x ) {
+	public void setX( double x ) {
 		this.x = x;
 	}
-	public void setY( int y ) {
+	public void setY( double y ) {
 		this.y = y;
 	}
 	
+	public CollisionBox getCBox() {
+		return cBox;
+	}
 	
 	
-	public int getDx() {
+	public double getDx() {
 		return dx;
 	}
-	public int getDy() {
+	public double getDy() {
 		return dy;
 	}
 	
-	public void setDx( int dx ) {
+	public void setDx( double dx ) {
 		this.dx = dx;
 	}
-	public void setDy( int dy ) {
+	public void setDy( double dy ) {
 		this.dy = dy;
 	}
 	
 	public void setWidth( int width ) { this.width = width; }
 	public void setHeight( int height ) { this.height = height; }
+	
+	public int getHeight() { return height; }
 	
 	public void move() {
 		x += dx;
@@ -79,7 +85,7 @@ public abstract class Entity {
 	}
 	
 	public void draw( Graphics g ) {
-		g.drawImage( image, x, y, width, height, null );
+		g.drawImage( image, (int)x, (int)y, width, height, null );
 	}
 	
 }

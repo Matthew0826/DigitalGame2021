@@ -19,6 +19,11 @@ public class Player extends Ally{
 	
 	@Override
 	public void move() {
+		setDy( getDy() + .1 );
+		System.out.println( getY() + getHeight() );
+		if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
+			setDy( 0 );
+		}
 		setX( getX() + getDx() );
 		setY( getY() + getDy() );
 		if( getDx() != 0 || getDy() != 0 ) {
@@ -36,39 +41,39 @@ public class Player extends Ally{
 		int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            setDx( -2 );
+        	if( getY() + getHeight() - 50 >= 925 ) {
+                setDx( -5 );
+        	}
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            setDx( 2 );
+        	if( getY() + getHeight() - 50 >= 925 ) {
+                setDx( 5 );
+        	}
         }
 
         if (key == KeyEvent.VK_UP) {
-            setDy( -2 );
+        	if( getY() + getHeight() - 50 >= 925 ) {
+                setDy( -10 );
+        	}
+
         }
 
-        if (key == KeyEvent.VK_DOWN) {
-            setDy( 2 );
-        }
 	}
 	
 	public void keyReleased( KeyEvent e ) {
 		int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            setDx( 0 );
+        	if( getY() + getHeight() - 50 >= 925 ) {
+                setDx( 0 );
+        	}
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            setDx( 0 );
-        }
-
-        if (key == KeyEvent.VK_UP) {
-           setDy( 0 );
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            setDy( 0 );
+        	if( getY() + getHeight() - 50 >= 925 ) {
+                setDx( 0 );
+        	}
         }
 	}
 }

@@ -7,14 +7,20 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 
+import Main.CollisionBox;
+
 public class Block {
 
 	private int x;
 	private int y;
 	
+	private CollisionBox cBox;
+	
 	public Block( int x, int y ) {
 		this.x = x;
 		this.y = y;
+		
+		cBox = new CollisionBox( x, y, 100, 100, 0 );
 		
 	}
 	
@@ -23,6 +29,10 @@ public class Block {
 		Image image = icon.getImage();
 	    g.drawImage(image, x, y, 100, 100, null);
 
+	}
+	
+	public CollisionBox getCBox() {
+		return cBox;
 	}
 	
 }
