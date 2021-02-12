@@ -15,6 +15,7 @@ import javax.swing.Timer;
 
 import Blocks.Block;
 import Entities.Player;
+import Entities.Doctor;
 
 public class Board extends JPanel implements ActionListener{
 	
