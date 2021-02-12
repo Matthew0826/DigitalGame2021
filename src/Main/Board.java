@@ -19,6 +19,7 @@ import Entities.Player;
 public class Board extends JPanel implements ActionListener{
 	
 	private Player player = new Player( 100, 20 );
+	private Doctor doctor = new Doctor(100, 220);
 	private Block[] blocks = new Block[20];
     private Timer timer;
     private final int DELAY = 10;
