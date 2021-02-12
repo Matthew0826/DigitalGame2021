@@ -45,5 +45,4 @@ public class Doctor extends Enemy{
 	}
 	
 	
-// Just checking if github works
 }
