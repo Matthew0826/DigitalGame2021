@@ -56,6 +56,7 @@ public class Board extends JPanel implements ActionListener{
 		g2d.drawImage( layer1, 0, 0, 2000, 1000,null );
 		for( int i = 0; i < blocks.length; i++ ) { blocks[i].draw( g2d ); }
 		player.draw( g2d );
+		doctor.draw(g2d);
     }
 	
 	private class TAdapter extends KeyAdapter{
