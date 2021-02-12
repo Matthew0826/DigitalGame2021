@@ -42,20 +42,15 @@ public class Board extends JPanel implements ActionListener{
 	@Override
     public void actionPerformed(ActionEvent e) { 
     	player.move();
-    	repaint( );
+    	repaint();
     	if (player.getX() > doctor.getX()) {
 			doctor.setDx(2.5);
-			if (player.getCBox() == doctor.getCBox()) {
-				doctor.setDx(-2.5);
-			}
 			doctor.move();
 			repaint();
 		}
+    	
 		if (player.getX() < doctor.getX()) {
 			doctor.setDx(-2.5);
-			if (player.getCBox() == doctor.getCBox()) {
-				doctor.setDx(2.5);
-			}
 			doctor.move();
 			repaint();
 		}
