@@ -7,6 +7,12 @@ public class Doctor extends Enemy{
 	public static final String imageString = "images/entites/doctor/doctor0.png";
 	public static final ImageIcon startingImage = new ImageIcon( imageString );
 	
+	public Doctor( int x, int y ){
+		super( x, y, startingImage.getImage() );
+		setWidth(200);
+		setHeight(400);
+	}
+	
 	private int collectedMoney;
 	
 	public int getCollectedMoney() {
@@ -21,9 +27,6 @@ public class Doctor extends Enemy{
 		//I think?
 	}
 	    
-	public Doctor( int x, int y ){
-		super( x, y, startingImage.getImage() );
-	}
 
 	@Override
 	public void trackAlly(Ally ally) {
