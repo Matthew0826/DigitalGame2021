@@ -45,18 +45,12 @@ public class Board extends JPanel implements ActionListener{
     	repaint();
     	if (player.getX() > doctor.getX()) {
 			doctor.setDx(2.5);
-			if (player.getCBox().getX() + 500 == doctor.getCBox().getX() + 500) {
-				doctor.setDx(0);
-			}
 			doctor.move();
 			repaint();
 		}
     	
 		if (player.getX() < doctor.getX()) {
 			doctor.setDx(-2.5);
-			if (player.getCBox().getX() + 500 == doctor.getCBox().getX() + 500) {
-				doctor.setDx(0);
-			}
 			doctor.move();
 			repaint();
 		}
