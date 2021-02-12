@@ -20,7 +20,7 @@ import Entities.Doctor;
 public class Board extends JPanel implements ActionListener{
 	
 	private Player player = new Player( 100, 20 );
-	private Doctor doctor = new Doctor(100, 50);
+	private Doctor doctor = new Doctor(100, 120);
 	private Block[] blocks = new Block[20];
     private Timer timer;
     private final int DELAY = 10;
@@ -44,6 +44,20 @@ public class Board extends JPanel implements ActionListener{
     	player.move();
     	repaint( );
     }
+	
+	public void doctorFollow() {
+		if (player.getX() > doctor.getX()) {
+			doctor.setDx(5);
+			doctor.move();
+			repaint();
+		}
+		if (player.getX() < doctor.getX()) {
+			doctor.setDx(-5);
+			doctor.move();
+			repaint();
+		}
+	}
+	
 	@Override
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -58,6 +72,8 @@ public class Board extends JPanel implements ActionListener{
 		player.draw( g2d );
 		doctor.draw(g2d);
     }
+	
+	
 	
 	private class TAdapter extends KeyAdapter{
 		@Override

@@ -2,6 +2,8 @@ package Entities;
 
 import javax.swing.ImageIcon;
 
+import Entities.Player;
+
 public class Doctor extends Enemy{
 	
 	public static final String imageString = "images/entites/doctor/doctor0.png";
@@ -32,5 +34,16 @@ public class Doctor extends Enemy{
 	public void trackAlly(Ally ally) {
 		
 	}
+	
+	public void move() {
+		setDy( getDy() + .1 );
+		if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
+			setDy( 0 );
+		}
+		setX( getX() + getDx() );
+		setY( getY() + getDy() );
+	}
+	
+	
 // Just checking if github works
 }
