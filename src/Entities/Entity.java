@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import Main.CollisionBox;
 //Dan's Github works!!!
 //Tickity tackity
+//egg
 public abstract class Entity {
 	
 	private double x;
