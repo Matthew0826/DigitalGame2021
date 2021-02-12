@@ -9,7 +9,7 @@ public class Application extends JFrame {
     	  add(new Board());
 
     	  //test
-          setSize(250, 200);
+          setSize(800, 800);
 
           setTitle("Digital Game 2021");
           setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
