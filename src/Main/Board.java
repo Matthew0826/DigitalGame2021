@@ -20,7 +20,7 @@ import Entities.Doctor;
 public class Board extends JPanel implements ActionListener{
 	
 	private Player player = new Player( 100, 20 );
-	private Doctor doctor = new Doctor(100, 120);
+	private Doctor doctor = new Doctor(100, 600);
 	private Block[] blocks = new Block[20];
     private Timer timer;
     private final int DELAY = 10;
@@ -45,12 +45,12 @@ public class Board extends JPanel implements ActionListener{
     	doctor.move();
     	repaint( );
     	if (player.getX() > doctor.getX()) {
-			doctor.setDx(3);
+			doctor.setDx(2);
 			doctor.move();
 			repaint();
 		}
 		if (player.getX() < doctor.getX()) {
-			doctor.setDx(-3);
+			doctor.setDx(-2);
 			doctor.move();
 			repaint();
 		}
