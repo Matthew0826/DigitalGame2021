@@ -43,6 +43,16 @@ public class Board extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) { 
     	player.move();
     	repaint( );
+    	if (player.getX() > doctor.getX()) {
+			doctor.setDx(5);
+			doctor.move();
+			repaint();
+		}
+		if (player.getX() < doctor.getX()) {
+			doctor.setDx(-5);
+			doctor.move();
+			repaint();
+		}
     }
 	
 	public void doctorFollow() {
