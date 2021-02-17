@@ -39,6 +39,8 @@ public class Board extends JPanel implements ActionListener{
 		
 	}
 	
+	//egg
+	
 	@Override
     public void actionPerformed(ActionEvent e) { 
     	player.move();
