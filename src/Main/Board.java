@@ -47,17 +47,7 @@ public class Board extends JPanel implements ActionListener{
     	doctor.move();
     	repaint();
     		
-    	if (player.getX() == doctor.getX()) {
-    		doctor.setDx(0);
-    	} 
-    	
-    	if (player.getX() > doctor.getX()) {
-    		doctor.setDx(2.5);
-    	}
-    	
-    	if (player.getX() < doctor.getX()) {
-    		doctor.setDx(-2.5);
-    	}
+    	DoctorMoveSet();
     }
 	
 	
@@ -76,7 +66,27 @@ public class Board extends JPanel implements ActionListener{
 		doctor.draw(g2d);
     }
 	
-	
+	private void DoctorMoveSet() {
+		
+		if ((player.getX() >= (doctor.getX() - 300)) && (player.getX() <= (doctor.getX() + 300))) {
+			
+			if (player.getX() == doctor.getX()) {
+	    		doctor.setDx(0);
+	    	} 
+			
+			if (player.getX() < doctor.getX()) {
+	    		doctor.setDx(-2.5);
+	    	}
+			
+	    	if (player.getX() > doctor.getX()) {
+	    		doctor.setDx(2.5);
+	    	}
+	    		
+	    	if ((player.getX() <= (doctor.getX() - 300)) || (player.getX() >= (doctor.getX() + 300))) {
+	    		doctor.setDx(0);
+	    	}
+		}
+	}
 	
 	private class TAdapter extends KeyAdapter{
 		@Override
