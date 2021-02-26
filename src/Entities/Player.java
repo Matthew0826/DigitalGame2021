@@ -19,7 +19,7 @@ public class Player extends Ally{
 	
 	@Override
 	public void move() {
-		setDy( getDy() + .1 );
+		setDy( getDy() + .3 );
 		if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
 			setDy( 0 );
 		}
