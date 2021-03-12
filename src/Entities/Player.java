@@ -5,11 +5,16 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import Blocks.Block;
+
 public class Player extends Ally{
 
 	private static int image = 0;
 	public static String imageString = "images/entites/player/image" + image + ".png";
 	public static ImageIcon startingImage = new ImageIcon( imageString );
+	private boolean onBlock = false;
+	private boolean jumping = false;
+	private boolean terminateX = false;
 	
 	public Player( int x, int y ){
 		super( x, y, startingImage.getImage() );
@@ -17,8 +22,20 @@ public class Player extends Ally{
 		setHeight( 400 );
     }
 	
+	public void collidesWithBlock( Block[] blocks ) {
+		onBlock = false;
+		for( Block block : blocks ) {
+			if( this.getCBox().collides( block.getCBox() )) {
+				onBlock = true;
+			}
+		}
+	}
+	
 	@Override
 	public void move() {
+		if( terminateX && onBlock ) { setDx( 0 ); }
+		setDy( getDy() + .4 );
+		if ( onBlock && !jumping ) { setDy( 0 ); } 
 		setDy( getDy() + .3 );
 		if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
 			setDy( 0 );
@@ -35,44 +52,34 @@ public class Player extends Ally{
 		setImage( startingImage.getImage() );
 	}
 	
+	//Test Comment
+	
 	public void keyPressed( KeyEvent e ) {
 		
 		int key = e.getKeyCode();
+       	jumping = false;
 
-        if (key == KeyEvent.VK_LEFT) {
-        	if( getY() + getHeight() - 50 >= 925 ) {
-                setDx( -5 );
-        	}
+        if (key == KeyEvent.VK_LEFT && onBlock) {
+        	setDx( -5 );
+        	terminateX = false;
+        }else if (key == KeyEvent.VK_RIGHT && onBlock) {
+        	 setDx( 5 );
+        	 terminateX = false;
         }
 
-        if (key == KeyEvent.VK_RIGHT) {
-        	if( getY() + getHeight() - 50 >= 925 ) {
-                setDx( 5 );
-        	}
+        if (key == KeyEvent.VK_UP && onBlock) {
+        	setDy( -10 );
+        	jumping = true;
         }
-
-        if (key == KeyEvent.VK_UP) {
-        	if( getY() + getHeight() - 50 >= 925 ) {
-                setDy( -10 );
-        	}
-
-        }
-
 	}
 	
 	public void keyReleased( KeyEvent e ) {
 		int key = e.getKeyCode();
+       	jumping = false;
+       	if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT ) {
+       		terminateX = true;
+       	}
+       
 
-        if (key == KeyEvent.VK_LEFT) {
-        	if( getY() + getHeight() - 50 >= 925 ) {
-                setDx( 0 );
-        	}
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-        	if( getY() + getHeight() - 50 >= 925 ) {
-                setDx( 0 );
-        	}
-        }
 	}
 }
