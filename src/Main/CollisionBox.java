@@ -43,6 +43,8 @@ public class CollisionBox{
 	     }
 	  }
 	  
+	  //this is disgusting
+	  
 	  //Checks each line of this box in left, top, right, bottom
 	  public boolean[] checkCollisions( CollisionBox box ){                               
 	    boolean[] returnBool = new boolean[4];
