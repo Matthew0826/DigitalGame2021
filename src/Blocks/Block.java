@@ -20,7 +20,7 @@ public class Block {
 		this.x = x;
 		this.y = y;
 		
-		cBox = new CollisionBox( x, y, 100, 100, 0 );
+		cBox = new CollisionBox( x, y, 100, 100 );
 		
 	}
 	

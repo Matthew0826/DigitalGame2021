@@ -28,7 +28,7 @@ public abstract class Entity {
 		this.x = x;
 		this.y = y;
 		this.image = image;
-		cBox = new CollisionBox( x, y, height, width, 0 );
+		cBox = new CollisionBox( x, y, height, width );
 	}
 
 	public double getX() {
