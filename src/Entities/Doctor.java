@@ -2,20 +2,23 @@ package Entities;
 
 import javax.swing.ImageIcon;
 
+import Blocks.Block;
 import Entities.Player;
 
 public class Doctor extends Enemy{
 	
 	public static final String imageString = "images/entites/doctor/doctor0.png";
 	public static final ImageIcon startingImage = new ImageIcon( imageString );
+	private boolean onBlock = false;
+	private boolean jumping = false;
+	private boolean terminateX = false;
+	private int collectedMoney;
 	
 	public Doctor( int x, int y ){
 		super( x, y, startingImage.getImage() );
 		setWidth(200);
 		setHeight(400);
 	}
-	
-	private int collectedMoney;
 	
 	public int getCollectedMoney() {
 		return collectedMoney;
@@ -35,13 +38,30 @@ public class Doctor extends Enemy{
 		
 	}
 	
-	public void move() {
-		setDy( getDy() + .3 );
-		if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
-			setDy( 0 );
+	public void collidesWithBlock( Block[] blocks ) {
+		onBlock = false;
+		for( Block block : blocks ) {
+			if( this.getCBox().collides( block.getCBox() )) {
+				onBlock = true;
+			}
 		}
+	}
+	
+	public void move() {
+		if( !onBlock) {
+			setDy( getDy() + .4 );
+		}
+		if( terminateX && onBlock ) { setDx( 0 ); }
+		if ( onBlock && !jumping ) { setDy( 0 ); } 
 		setX( getX() + getDx() );
 		setY( getY() + getDy() );
+		
+		//setDy( getDy() + .3 );
+		//if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
+		//	setDy( 0 );
+		//}
+		//setX( getX() + getDx() );
+		//setY( getY() + getDy() );
 	}
 	
 	

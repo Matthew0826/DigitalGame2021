@@ -46,6 +46,7 @@ public class Board extends JPanel implements ActionListener{
 	@Override
     public void actionPerformed(ActionEvent e) { 
 		player.collidesWithBlock(blocks);
+		doctor.collidesWithBlock(blocks);
     	player.move();
     	doctor.move();
     	repaint();
