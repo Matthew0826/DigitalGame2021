@@ -33,13 +33,11 @@ public class Player extends Ally{
 	
 	@Override
 	public void move() {
-		if( terminateX && onBlock ) { setDx( 0 ); }
-		setDy( getDy() + .4 );
-		if ( onBlock && !jumping ) { setDy( 0 ); } 
-		setDy( getDy() + .3 );
-		if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
-			setDy( 0 );
+		if( !onBlock) {
+			setDy( getDy() + .4 );
 		}
+		if( terminateX && onBlock ) { setDx( 0 ); }
+		if ( onBlock && !jumping ) { setDy( 0 ); } 
 		setX( getX() + getDx() );
 		setY( getY() + getDy() );
 		if( getDx() != 0 || getDy() != 0 ) {

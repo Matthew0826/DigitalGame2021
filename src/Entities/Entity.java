@@ -61,19 +61,23 @@ public abstract class Entity {
 	
 	public void setDx( double dx ) {
 		this.dx = dx;
+		cBox.setX( x );
 	}
 	public void setDy( double dy ) {
 		this.dy = dy;
+		cBox.setY( y );
 	}
 	
-	public void setWidth( int width ) { this.width = width; }
-	public void setHeight( int height ) { this.height = height; }
+	public void setWidth( int width ) { this.width = width; cBox.setWidth(width); }
+	public void setHeight( int height ) { this.height = height; cBox.setHeight(height); }
 	
 	public int getHeight() { return height; }
 	
 	public void move() {
 		x += dx;
 		y += dy;
+		cBox.setX( x );
+		cBox.setY( y );
 	}
 	
 	
