@@ -15,12 +15,14 @@ import javax.swing.Timer;
 
 import Blocks.Block;
 import Entities.Player;
+import Entities.Surgeon;
 import Entities.Doctor;
 
 public class Board extends JPanel implements ActionListener{
 	
 	private Player player = new Player( 100, 20 );
 	private Doctor doctor = new Doctor(400, 20);
+	private Surgeon surgeon = new Surgeon( 100, 20 );
 	private Block[] blocks = new Block[20];
     private Timer timer;
     private final int DELAY = 10;
@@ -64,6 +66,7 @@ public class Board extends JPanel implements ActionListener{
 		for( int i = 0; i < blocks.length; i++ ) { blocks[i].draw( g2d ); }
 		player.draw( g2d );
 		doctor.draw(g2d);
+		surgeon.draw(g2d);
     }
 	
 	private void DoctorMoveSet() {
