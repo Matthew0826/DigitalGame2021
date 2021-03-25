@@ -22,6 +22,7 @@ public class Surgeon extends Enemy{
 	public void trackAlly(Ally ally) {
 		
 	}
+	
 	public void collidesWithBlock( Block[] blocks ) {
 		onBlock = false;
 		for( Block block : blocks ) {
