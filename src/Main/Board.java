@@ -47,8 +47,10 @@ public class Board extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) { 
 		player.collidesWithBlock(blocks);
 		doctor.collidesWithBlock(blocks);
+		surgeon.collidesWithBlock(blocks);
     	player.move();
     	doctor.move();
+    	surgeon.move();
     	repaint();
     		
     	DoctorMoveSet();
