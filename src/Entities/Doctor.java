@@ -55,13 +55,6 @@ public class Doctor extends Enemy{
 		if ( onBlock && !jumping ) { setDy( 0 ); } 
 		setX( getX() + getDx() );
 		setY( getY() + getDy() );
-		
-		//setDy( getDy() + .3 );
-		//if( getY() + getHeight() - 50 >= 925 && getDy() > 0) {
-		//	setDy( 0 );
-		//}
-		//setX( getX() + getDx() );
-		//setY( getY() + getDy() );
 	}
 	
 	
