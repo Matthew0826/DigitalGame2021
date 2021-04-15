@@ -99,6 +99,10 @@ public class Board extends JPanel implements ActionListener{
 	    	if ((player.getX() <= (doctor.getX() - 300)) || (player.getX() >= (doctor.getX() + 300))) {
 	    		doctor.setDx(0);
 	    	}
+	    	
+	    	if (!playerAlive) {
+	    		doctor.setDx(0);
+	    	}
 		}
 	}
 	
