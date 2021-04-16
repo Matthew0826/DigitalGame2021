@@ -14,8 +14,8 @@ public class Surgeon extends Enemy{
 	
 	public Surgeon( int x, int y ){
 		super( x, y, startingImage.getImage() );
-		setWidth(200);
-		setHeight(400);
+		setWidth(250);
+		setHeight(550);
 	}
 
 	@Override

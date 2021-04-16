@@ -26,8 +26,7 @@ public class Board extends JPanel implements ActionListener{
 	private Block[] blocks = new Block[20];
     private Timer timer;
     private final int DELAY = 10;
-    
-    private boolean playerAlive = true;
+    private boolean SurgeonAlive = false;
 	
 	public Board() {
 		
@@ -50,15 +49,13 @@ public class Board extends JPanel implements ActionListener{
 		player.collidesWithBlock(blocks);
 		doctor.collidesWithBlock(blocks);
 		surgeon.collidesWithBlock(blocks);
-    	if (playerAlive) {
-    		player.move();
-    	}
+    	player.move();
     	doctor.move();
     	surgeon.move();
     	repaint();
     		
     	DoctorMoveSet();
-    	collidesWithDoctor();
+    	SurgeonMove();
     }
 	
 	
@@ -73,9 +70,7 @@ public class Board extends JPanel implements ActionListener{
 		g2d.drawImage( layer0, 0, 0, 2000, 1000, null );
 		g2d.drawImage( layer1, 0, 0, 2000, 1000,null );
 		for( int i = 0; i < blocks.length; i++ ) { blocks[i].draw( g2d ); }
-		if (playerAlive) {
-			player.draw( g2d );
-		}
+		player.draw( g2d );
 		doctor.draw(g2d);
 		surgeon.draw(g2d);
     }
@@ -99,19 +94,18 @@ public class Board extends JPanel implements ActionListener{
 	    	if ((player.getX() <= (doctor.getX() - 300)) || (player.getX() >= (doctor.getX() + 300))) {
 	    		doctor.setDx(0);
 	    	}
+		}
 	    	
-	    	if (!playerAlive) {
-	    		doctor.setDx(0);
-	    	}
+			
 		}
-	}
-	
-	private void collidesWithDoctor() {
-		if( player.getCBox().collides(doctor.getCBox() )) {
-			player.setDx(0);
-			player.setDy(0);
-			playerAlive = false;
+		
+	private void SurgeonMove() {
+			
+		while (SurgeonAlive) {
+			surgeon.setDx(3);
+			
 		}
+			
 	}
 	
 	private class TAdapter extends KeyAdapter{
