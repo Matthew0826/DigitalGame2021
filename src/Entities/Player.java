@@ -18,8 +18,8 @@ public class Player extends Ally{
 	
 	public Player( int x, int y ){
 		super( x, y, startingImage.getImage() );
-		setWidth( 200 );
-		setHeight( 400 );
+		setWidth( 160 );
+		setHeight( 380 );
     }
 	
 	public void collidesWithBlock( Block[] blocks ) {
@@ -30,6 +30,8 @@ public class Player extends Ally{
 			}
 		}
 	}
+	
+
 	
 	@Override
 	public void move() {
@@ -73,7 +75,7 @@ public class Player extends Ally{
 	
 	public void keyReleased( KeyEvent e ) {
 		int key = e.getKeyCode();
-       	jumping = false;
+		jumping = false;
        	if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT ) {
        		terminateX = true;
        	}
