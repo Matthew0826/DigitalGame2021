@@ -73,7 +73,9 @@ public class Board extends JPanel implements ActionListener{
 		g2d.drawImage( layer0, 0, 0, 2000, 1000, null );
 		g2d.drawImage( layer1, 0, 0, 2000, 1000,null );
 		for( int i = 0; i < blocks.length; i++ ) { blocks[i].draw( g2d ); }
-		player.draw( g2d );
+		if (playerAlive) {
+			player.draw( g2d );
+		}
 		doctor.draw(g2d);
 		surgeon.draw(g2d);
     }
