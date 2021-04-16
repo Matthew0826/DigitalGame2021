@@ -27,6 +27,7 @@ public class Board extends JPanel implements ActionListener{
     private Timer timer;
     private final int DELAY = 10;
     private boolean SurgeonAlive = false;
+    private boolean playerAlive = true;
 	
 	public Board() {
 		
@@ -49,13 +50,15 @@ public class Board extends JPanel implements ActionListener{
 		player.collidesWithBlock(blocks);
 		doctor.collidesWithBlock(blocks);
 		surgeon.collidesWithBlock(blocks);
-    	player.move();
+    	if (playerAlive) {
+    		player.move();
+    	}
     	doctor.move();
     	surgeon.move();
     	repaint();
     		
     	DoctorMoveSet();
-    	SurgeonMove();
+    	collidesWithDoctor();
     }
 	
 	
@@ -94,11 +97,22 @@ public class Board extends JPanel implements ActionListener{
 	    	if ((player.getX() <= (doctor.getX() - 300)) || (player.getX() >= (doctor.getX() + 300))) {
 	    		doctor.setDx(0);
 	    	}
+
+	    	if (!playerAlive) {
+	    		doctor.setDx(0);
+	    	}
 		}
+	}
+	
+	private void collidesWithDoctor() {
+		if( player.getCBox().collides(doctor.getCBox() )) {
+			player.setDx(0);
+			player.setDy(0);
+			playerAlive = false;
+		}
+	}
 	    	
-			
-		}
-		
+	
 	private void SurgeonMove() {
 			
 		while (SurgeonAlive) {
