@@ -16,7 +16,7 @@ public class Doctor extends Enemy{
 	
 	public Doctor( int x, int y ){
 		super( x, y, startingImage.getImage() );
-		setWidth(160);
+		setWidth(160 );
 		setHeight(380);
 	}
 	
