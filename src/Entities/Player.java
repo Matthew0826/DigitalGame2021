@@ -52,7 +52,6 @@ public class Player extends Ally{
 		setImage( startingImage.getImage() );
 	}
 	
-	//Test Comment
 	
 	public void keyPressed( KeyEvent e ) {
 		

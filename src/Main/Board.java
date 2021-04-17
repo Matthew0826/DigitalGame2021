@@ -22,10 +22,12 @@ public class Board extends JPanel implements ActionListener{
 	
 	private Player player = new Player( 100, 20 );
 	private Doctor doctor = new Doctor(400, 20);
-	private Surgeon surgeon = new Surgeon( 100, 20 );
+	private Surgeon surgeon = new Surgeon(100, 20);
 	private Block[] blocks = new Block[20];
+	
     private Timer timer;
     private final int DELAY = 10;
+    
     private boolean SurgeonAlive = false;
     private boolean playerAlive = true;
 	
@@ -43,28 +45,27 @@ public class Board extends JPanel implements ActionListener{
 		
 	}
 	
-	//egg
-	
 	@Override
     public void actionPerformed(ActionEvent e) { 
+		
 		player.collidesWithBlock(blocks);
 		doctor.collidesWithBlock(blocks);
 		surgeon.collidesWithBlock(blocks);
-    	if (playerAlive) {
-    		player.move();
-    	}
+		playercollidesWithDoctor();
+		
+    	if (playerAlive) {player.move();}
+    	DoctorMoveSet();
     	doctor.move();
     	surgeon.move();
+    	
     	repaint();
-    		
-    	DoctorMoveSet();
-    	collidesWithDoctor();
     }
 	
 	
 	@Override
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
 		ImageIcon lyr0 = new ImageIcon( "images/background/layer0.png" );
 		ImageIcon lyr1 = new ImageIcon( "images/background/layer1.png" );
 		Image layer0 = lyr0.getImage();
@@ -72,10 +73,9 @@ public class Board extends JPanel implements ActionListener{
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.drawImage( layer0, 0, 0, 2000, 1000, null );
 		g2d.drawImage( layer1, 0, 0, 2000, 1000,null );
+		
 		for( int i = 0; i < blocks.length; i++ ) { blocks[i].draw( g2d ); }
-		if (playerAlive) {
-			player.draw( g2d );
-		}
+		if (playerAlive) {player.draw( g2d );}
 		doctor.draw(g2d);
 		surgeon.draw(g2d);
     }
@@ -106,22 +106,19 @@ public class Board extends JPanel implements ActionListener{
 		}
 	}
 	
-	private void collidesWithDoctor() {
+	private void SurgeonMove() {
+		
+		while (SurgeonAlive) {
+			surgeon.setDx(3);	
+		}	
+	}
+	
+	private void playercollidesWithDoctor() {
 		if( player.getCBox().collides(doctor.getCBox() )) {
 			player.setDx(0);
 			player.setDy(0);
 			playerAlive = false;
 		}
-	}
-	    	
-	
-	private void SurgeonMove() {
-			
-		while (SurgeonAlive) {
-			surgeon.setDx(3);
-			
-		}
-			
 	}
 	
 	private class TAdapter extends KeyAdapter{
