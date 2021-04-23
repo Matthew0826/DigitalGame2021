@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 import Blocks.Block;
+import Main.Application;
 
 public class Player extends Ally{
 
@@ -18,8 +19,8 @@ public class Player extends Ally{
 	
 	public Player( int x, int y ){
 		super( x, y, startingImage.getImage() );
-		setWidth( 160 );
-		setHeight( 380 );
+		setWidth( 200 );
+		setHeight( 400 );
     }
 	
 	public void collidesWithBlock( Block[] blocks ) {
