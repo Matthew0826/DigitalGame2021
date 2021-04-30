@@ -6,11 +6,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 import Blocks.Block;
-<<<<<<< HEAD
 import Main.CollisionBox;
-=======
 import Main.Application;
->>>>>>> branch 'master' of https://github.com/Matthew0826/DigitalGame2021.git
 
 public class Player extends Ally{
 
@@ -29,14 +26,11 @@ public class Player extends Ally{
 	
 	public Player( int x, int y ){
 		super( x, y, startingImage.getImage() );
-<<<<<<< HEAD
 		setWidth( 160 );
 		setHeight( 380 );
 		whipBox = new CollisionBox( x + 160, y, 100, 380 );
-=======
 		setWidth( 200 );
 		setHeight( 400 );
->>>>>>> branch 'master' of https://github.com/Matthew0826/DigitalGame2021.git
     }
 	
 	public void collidesWithBlock( Block[] blocks ) {
