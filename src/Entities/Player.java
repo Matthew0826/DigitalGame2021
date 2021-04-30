@@ -6,20 +6,28 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 import Blocks.Block;
+import Main.CollisionBox;
 
 public class Player extends Ally{
 
 	private static int image = 0;
 	public static String imageString = "images/entites/player/image" + image + ".png";
 	public static ImageIcon startingImage = new ImageIcon( imageString );
+	private static CollisionBox whipBox;
 	private boolean onBlock = false;
 	private boolean jumping = false;
 	private boolean terminateX = false;
+	
+	private int whipValue = 100;
+	private int whipWaitCounter = 0;
+	
+	private boolean attack = false;
 	
 	public Player( int x, int y ){
 		super( x, y, startingImage.getImage() );
 		setWidth( 160 );
 		setHeight( 380 );
+		whipBox = new CollisionBox( x + 160, y, 100, 380 );
     }
 	
 	public void collidesWithBlock( Block[] blocks ) {
@@ -47,9 +55,36 @@ public class Player extends Ally{
 		}else {
 			image = 0;
 		}
-		imageString = "images/entites/player/image" + image + ".png";
-		startingImage = new ImageIcon( imageString );
-		setImage( startingImage.getImage() );
+		
+		if( !attack || whipWaitCounter != 0  ) {
+			if( whipValue < 100 ) { whipValue++; }
+			imageString = "images/entites/player/image" + image + ".png";
+			startingImage = new ImageIcon( imageString );
+			setImage( startingImage.getImage() );		
+		}else if( whipValue > 0) {
+			whipValue --;
+        	ImageIcon i = new ImageIcon("images/entites/player/whip0.png");
+        	setImage( i.getImage() );
+        	
+        	whipBox = new CollisionBox( getX() - 160, getY(), 100, 380 );
+		}else {
+			attack = false;
+			whipWaitCounter = 100;
+		}
+		
+		if( whipWaitCounter != 0 ) { whipWaitCounter--; }
+		
+        System.out.println( whipValue );
+
+		
+	}
+	
+	public CollisionBox getWhipBox() {
+		if( attack ) {
+			return whipBox;
+		}else {
+			return new CollisionBox( 0, 0, 0, 0 );
+		}
 	}
 	
 	
@@ -67,9 +102,24 @@ public class Player extends Ally{
         }
 
         if (key == KeyEvent.VK_UP && onBlock) {
+
         	setDy( -10 );
         	jumping = true;
         }
+        
+        if (key == KeyEvent.VK_A ) {
+        	if( whipValue > 0 ) {
+            	attack = true;
+        	}else {
+        	attack = false;
+        	}
+        }
+        
+        if( key == KeyEvent.VK_D ) {
+
+        	attack = false;
+        }
+        
 	}
 	
 	public void keyReleased( KeyEvent e ) {

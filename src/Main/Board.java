@@ -119,6 +119,10 @@ public class Board extends JPanel implements ActionListener{
 			player.setDy(0);
 			playerAlive = false;
 		}
+		if( player.getWhipBox().collides(doctor.getCBox() )) {
+			doctor.setX( 10000 );
+			doctor.getCBox().setX( 10000 );
+		}
 	}
 	
 	private class TAdapter extends KeyAdapter{
