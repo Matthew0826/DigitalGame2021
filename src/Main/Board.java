@@ -1,11 +1,14 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -17,6 +20,7 @@ import Blocks.Block;
 import Entities.Player;
 import Entities.Surgeon;
 import Entities.Doctor;
+import Main.Application;
 
 public class Board extends JPanel implements ActionListener{
 	
@@ -30,7 +34,7 @@ public class Board extends JPanel implements ActionListener{
     
     private boolean SurgeonAlive = false;
     private boolean playerAlive = true;
-	
+    
 	public Board() {
 		
 		for( int i = 0; i < blocks.length; i++ ) {
@@ -71,13 +75,14 @@ public class Board extends JPanel implements ActionListener{
 		Image layer0 = lyr0.getImage();
 		Image layer1 = lyr1.getImage();
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.drawImage( layer0, 0, 0, 2000, 1000, null );
-		g2d.drawImage( layer1, 0, 0, 2000, 1000,null );
+		g2d.drawImage( layer0, 0, 0, Application.scaleX(2000), Application.scaleY(1000), null );
+		g2d.drawImage( layer1, 0, 0, Application.scaleX(2000), Application.scaleY(1000), null );
 		
 		for( int i = 0; i < blocks.length; i++ ) { blocks[i].draw( g2d ); }
 		if (playerAlive) {player.draw( g2d );}
 		doctor.draw(g2d);
 		surgeon.draw(g2d);
+		
     }
 	
 	private void DoctorMoveSet() {

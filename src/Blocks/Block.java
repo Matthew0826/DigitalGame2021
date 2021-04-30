@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 import Main.CollisionBox;
+import Main.Application;
 
 public class Block {
 

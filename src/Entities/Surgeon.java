@@ -3,6 +3,7 @@ package Entities;
 import javax.swing.ImageIcon;
 
 import Blocks.Block;
+import Main.Application;
 
 public class Surgeon extends Enemy{
 
